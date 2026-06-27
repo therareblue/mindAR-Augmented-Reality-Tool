@@ -21,10 +21,20 @@ The tool provides:
 
 ```
 /
-├── index.html          # Main app — AR viewer with subtitle overlay
-├── target.mind         # Image target marker (compiled with MindAR or equivalent)
-├── overlay.mp4         # Animated video overlay
-└── README.md
+├── index.html                        # Main app — AR viewer with subtitle overlay
+│
+├── js/
+│   ├── app.js                        # Main application logic
+│   ├── mindar-image-aframe.prod.js   # MindAR (tested version)
+│   └── aframe.min.js                 # A-Frame (tested version)
+│
+└── assets/
+    ├── fonts/                        # Custom fonts
+    ├── targets/                      # Compiled .mind image target files
+    ├── overlays/                     # Video overlay files (.mp4)
+    └── ui/
+        ├── style.css                 # Main stylesheet
+        └── icons/                    # UI icons
 ```
 
 ---
@@ -50,6 +60,8 @@ This is a demonstration asset. Replace `assets/overlays/overlay.mp4` with your o
 The marker file is `target.mind` — a compiled image target used to anchor the video overlay in AR space. The physical printed image must match this marker for detection to work.
 
 To generate your own `target.mind` from a different image, use the [MindAR Image Target Compiler](https://hiukim.github.io/mind-ar-js-doc/tools/compile).
+
+**Note:** Multiple markers: If the project includes several videos, all marker images must be compiled together into a single target.mind file. MindAR supports multi-image targets — each image in the compiled file gets an index (0, 1, 2...) which is then referenced individually in the code to trigger its corresponding video overlay.
 
 ---
 

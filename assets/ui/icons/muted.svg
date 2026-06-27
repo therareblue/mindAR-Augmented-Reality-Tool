@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+
+  <!-- Speaker body -->
+  <path d="M4 9H8L13 5V19L8 15H4Z" stroke="#ffcd7d" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"></path>
+
+  <!-- Bigger muted X -->
+  <path d="M15.2 8.8L20.2 13.8" stroke="#ffcd7d" stroke-width="3" stroke-linecap="round"></path>
+  <path d="M20.2 8.8L15.2 13.8" stroke="#ffcd7d" stroke-width="3" stroke-linecap="round"></path>
+</svg>

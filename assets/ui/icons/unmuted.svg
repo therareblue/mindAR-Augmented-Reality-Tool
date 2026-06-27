@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+
+  <style>
+    .wave1 {
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    .wave2 {
+      animation: pulse 1.8s ease-in-out infinite;
+      animation-delay: 0.25s;
+    }
+
+    @keyframes pulse {
+      0%   { opacity: 0.3; }
+      50%  { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+  </style>
+
+  <!-- Speaker body -->
+  <path d="M4 9H8L13 5V19L8 15H4Z" stroke="#2f2f2f" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></path>
+
+  <!-- Sound waves -->
+  <path class="wave1" d="M16 9C17.5 10.5 17.5 13.5 16 15" stroke="#2f2f2f" stroke-width="2.4" stroke-linecap="round"></path>
+
+  <path class="wave2" d="M18.5 7C21 9.5 21 14.5 18.5 17" stroke="#2f2f2f" stroke-width="2.4" stroke-linecap="round"></path>
+</svg>

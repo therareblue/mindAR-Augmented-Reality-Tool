@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta name="screen-orientation" content="portrait" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Историческа забележителност</title>
+
+  <link rel="stylesheet" href="assets/ui/style.css?v=1.1" />
+
+  <script src="js/aframe.min.js"></script>
+  <script src="js/mindar-image-aframe.prod.js"></script>
+
+  <style>
+    @font-face {
+      font-family: 'Georgia';
+      src: url('assets/fonts/Georgia.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+  <main id="start-screen" class="start-screen">
+    <section class="start-card">
+      <p class="eyebrow">Местност: <strong>Карабалкан</strong></p>
+      <h1>Аговските рибарници в Горен Чифлик</h1>
+      <p class="collection-headline">Историческа реконструкция</p>
+      <p class="subtitle">
+        Насочи телефона към картината и виж как сцената оживява върху нея.
+      </p>
+
+      <button id="start-btn" class="start-btn" type="button">
+         Старт
+      </button>
+      <!-- <button id="start-btn" class="start-btn" disabled>Loading...</button> -->
+
+      <p class="note">
+        На следващата стъпка браузърът ще поиска достъп до камерата.
+      </p>
+
+      <p id="start-error" class="start-error" hidden></p>
+    </section>
+  </main>
+
+  <div id="ar-ui" class="ar-ui" aria-hidden="true">
+    <!-- <div id="status-chip" class="status-chip">Preparing the camera...</div> -->
+    <button id="reset-btn" class="reset-btn" type="button" aria-label="Рестартирай приложението">
+      <img src="assets/ui/icons/reset.png" alt="" />
+    </button>
+    <button id="sound-btn" class="sound-btn" type="button" aria-label="Включи звук">
+      <img id="sound-icon" src="assets/ui/icons/muted.svg" alt="" />
+    </button>
+    <button id="caps-btn" class="caps-btn" type="button" aria-label="Субтитри: БГ">
+      <img id="caps-icon" src="assets/ui/icons/caps_bg.png" alt="" />
+    </button>
+
+    <!-- Caption overlay -->
+    <div id="caption-box" class="caption-box hidden" aria-live="polite">
+      <p id="caption-text" class="caption-text"></p>
+    </div>
+
+  </div>
+
+  <div id="scanning-overlay" class="scanning-overlay hidden" aria-hidden="true">
+    <div class="scan-box">
+      <div class="scan-frame"></div>
+      <p class="scan-text">Насочи камерата към картината.</p>
+    </div>
+  </div>
+  <div id="found-badge" class="found-badge hidden" aria-hidden="true">
+    Маркерът е разпознат.
+  </div>
+
+  <a-scene
+    id="main-scene"
+    class="ar-scene"
+    mindar-image="
+      imageTargetSrc: ./assets/targets/target.mind; 
+      autoStart: false; 
+      uiLoading: no; 
+      uiScanning: #scanning-overlay;
+      filterMinCF: 0.0005;
+      filterBeta: 200;
+      warmupTolerance: 8;
+      missTolerance: 8;
+    "
+      
+    embedded
+    renderer="colorManagement: true"
+    vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false">
+
+    <a-assets>
+      <video
+        id="overlay-video"
+        preload="metadata"
+        loop
+        playsinline
+        webkit-playsinline
+        crossorigin="anonymous"
+      ></video>
+    </a-assets>
+    <a-camera look-controls="enabled: false" position="0 0 0"></a-camera>
+
+    <a-entity id="marker-slot-0" mindar-image-target="targetIndex: 0">
+      <a-video id="video-slot-0" class="video-plane" src="#overlay-video" visible="false"></a-video>
+    </a-entity>
+
+  </a-scene>
+
+  <script src="js/app.js?v=1.2"></script>
+</body>
+</html>
